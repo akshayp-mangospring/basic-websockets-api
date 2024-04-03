@@ -1,0 +1,28 @@
+A WebSocket is an alternative to HTTP requests. An HTTP request is stateless whereas a WebSocket connection is Stateful.
+Just like HTTP, SMTP, FTP - WebSocket is also a communication protocol.
+
+In HTTP:
+It's a request-response based protocol.
+Client is the only one which is making a request whereas Server is the only one which's returning a response.
+
+In WebSockets:
+WebSocket is a full duplex connection.
+A connection is established first, between the Client and the Server.
+In this case the Client and Server both can send data to each other.
+WebSocket is running on the basis of events, events are passed between the Client and the Server continuously.
+We apply Event listeners of Server events on the Client.
+Every WebSocket that gets connected to the Server has got an ID associated to it.
+
+`socket.io` is a library that manages socket connections on NodeJS servers.
+In this App, `io` is used on the Server to refer to the cluster of all the Sockets connected on the Server.
+Whereas `socket` refers to an individual Socket which is connected to the `io` or the Server.
+
+The most common methods on Sockets here are:
+  emit - It's used to send a message/event to a particular client. Publisher.
+  on - To attach an event listener on the client. Subscriber.
+  broadcast - It's used to send a message/event to all the connected clients. `emit` is chained to the `broadcast` event.
+  to - It transfers data to a particular socket/room only. `emit` is chained to the `to` event.
+  join - It enables to join to a particular room. This enables a private chat.
+
+All the above events can be fired from both the Server and the Client.
+There are rooms
