@@ -5,21 +5,21 @@ module.exports = {
   "development": {
     "username": "root",
     "password": DB_PASSWORD,
-    "database": "websockets_development",
+    "database": "todos_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": DB_PASSWORD,
-    "database": "websockets_test",
+    "database": "todos_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": DB_PASSWORD,
-    "database": "websockets_production",
+    "database": "todos_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
