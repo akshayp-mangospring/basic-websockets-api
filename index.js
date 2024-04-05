@@ -2,7 +2,12 @@ const envConfig = require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { createServer } = require('node:http');
-const { getAllTodosInTodolist, createTodoInTodoList } = require('./controllers/todo_controller');
+const {
+  getAllTodosInTodolist,
+  createTodoInTodoList,
+  deleteTodoFromTodoList,
+  updateTodoFromTodoList
+} = require('./controllers/todo_controller');
 const { getAllTodolists, createTodoList } = require('./controllers/todolist_controller');
 
 const { parsed: { PORT } } = envConfig;
@@ -63,12 +68,43 @@ app.route('/todolists/:id/todos')
       });
   })
   .post((req, res) => {
-    const title = 'Learn Financial Literacy';
-    const todolistId = 1;
+    const title = req.body.title;
+    const todolistId = req.params.id;
 
     createTodoInTodoList(title, todolistId)
       .then((todo) => {
         res.send(todo);
+      })
+      .catch((err) => {
+        res.send({
+          success: false,
+        });
+        console.error('Error:', err);
+      });
+  });
+
+app.route('/todos/:id')
+  .delete((req, res) => {
+    const todoId = req.params.id;
+
+    deleteTodoFromTodoList(todoId)
+      .then(() => {
+        res.send({ success: true })
+      })
+      .catch((err) => {
+        res.send({
+          success: false,
+        });
+        console.error('Error:', err);
+      });
+  })
+  .put((req, res) => {
+    const todoId = req.params.id;
+    const reqBody = req.body;
+
+    updateTodoFromTodoList(todoId, reqBody)
+      .then((todo) => {
+        res.send(todo)
       })
       .catch((err) => {
         res.send({

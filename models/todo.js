@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Todo.init({
     name: DataTypes.STRING,
-    completed: DataTypes.BOOLEAN
+    completed: DataTypes.BOOLEAN,
+    todoListId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Todo',
