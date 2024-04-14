@@ -8,7 +8,7 @@ const {
   deleteTodoFromTodoList,
   updateTodoFromTodoList
 } = require('./controllers/todo_controller');
-const { getAllTodolists, createTodoList } = require('./controllers/todolist_controller');
+const { getAllTodolists, createTodoList, deleteTodoList } = require('./controllers/todolist_controller');
 
 const { parsed: { PORT } } = envConfig;
 const app = express();
@@ -49,7 +49,23 @@ app.route('/todolists')
       });
   })
   .put((req, res) => {
-    res.send('Update the book')
+    res.send('Update the book');
+  });
+
+app.route('/todolists/:id')
+  .delete((req, res) => {
+    const todoListId = req.params.id;
+
+    deleteTodoList(todoListId)
+      .then(() => {
+        res.send({ success: true })
+      })
+      .catch((err) => {
+        res.send({
+          success: false,
+        });
+        console.error('Error:', err);
+      });
   });
 
 app.route('/todolists/:id/todos')

@@ -16,5 +16,18 @@ module.exports = {
       console.error('Error retrieving todo lists:', err);
       throw err;
     }
-  }
+  },
+  deleteTodoList: async (todoListId) => {
+    try {
+      const todo = await TodoList.destroy({
+        where: {
+          id: todoListId,
+        },
+      });
+      return todo;
+    } catch (error) {
+      console.error('Error in deleting a todo list:', error);
+      throw error;
+    }
+  },
 };
