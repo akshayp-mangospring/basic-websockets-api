@@ -5,21 +5,21 @@ module.exports = {
   "development": {
     "username": "root",
     "password": DB_PASSWORD,
-    "database": "todos_development",
+    "database": "gaming_app_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": DB_PASSWORD,
-    "database": "todos_test",
+    "database": "gaming_app_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": DB_PASSWORD,
-    "database": "todos_production",
+    "database": "gaming_app_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
