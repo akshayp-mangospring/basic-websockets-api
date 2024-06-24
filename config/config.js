@@ -1,26 +1,26 @@
 const envConfig = require('dotenv').config();
-const { parsed: { DB_PASSWORD } } = envConfig;
+const { parsed: { DB_USER_NAME, DB_PASSWORD, DB_NAME, HOST, DB_DIALECT } } = envConfig;
 
 module.exports = {
   "development": {
-    "username": "root",
+    "username": DB_USER_NAME,
     "password": DB_PASSWORD,
-    "database": "todos_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": DB_NAME,
+    "host": HOST,
+    "dialect": DB_DIALECT
   },
   "test": {
-    "username": "root",
+    "username": DB_USER_NAME,
     "password": DB_PASSWORD,
-    "database": "todos_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": DB_NAME,
+    "host": HOST,
+    "dialect": DB_DIALECT
   },
   "production": {
-    "username": "root",
+    "username": DB_USER_NAME,
     "password": DB_PASSWORD,
-    "database": "todos_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": DB_NAME,
+    "host": HOST,
+    "dialect": DB_DIALECT
   }
 };
